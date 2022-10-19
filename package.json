@@ -1,18 +1,24 @@
 {
-  "name": ".",
+  "name": "telegram-webapp",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve",
-    "build": "nx build",
-    "test": "nx test"
+    "start": "nx run-many --parallel --target=serve --projects=bot,telegram-webapp",
+    "server:start": "nx serve bot",
+    "server:build": "nx build bot",
+    "server:test": "nx test bot",
+    "client:start": "nx serve",
+    "client:build": "nx build",
+    "client:test": "nx test"
   },
   "private": true,
   "dependencies": {
     "core-js": "^3.6.5",
+    "node-telegram-bot-api": "^0.59.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "regenerator-runtime": "0.13.7",
+    "telegram-webapps-types": "^1.0.5",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
@@ -21,6 +27,7 @@
     "@nrwl/eslint-plugin-nx": "15.0.0",
     "@nrwl/jest": "15.0.0",
     "@nrwl/linter": "15.0.0",
+    "@nrwl/node": "15.0.0",
     "@nrwl/nx-cloud": "latest",
     "@nrwl/react": "15.0.0",
     "@nrwl/web": "15.0.0",
@@ -28,6 +35,7 @@
     "@testing-library/react": "13.4.0",
     "@types/jest": "28.1.1",
     "@types/node": "16.11.7",
+    "@types/node-telegram-bot-api": "^0.57.5",
     "@types/react": "18.0.20",
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.36.1",

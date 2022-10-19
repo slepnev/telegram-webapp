@@ -1,12 +1,27 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.scss';
-import NxWelcome from './nx-welcome';
+import { TelegramWebApps } from 'telegram-webapps-types';
+import { useEffect } from 'react';
+
+const tg = ((window as any).Telegram as TelegramWebApps.SDK).WebApp;
 
 export function App() {
+  useEffect(() => {
+    tg.ready();
+  });
+
+  const onClose = () => {
+    tg.close();
+  };
+
   return (
     <>
-      <NxWelcome title="telegram-webapp" />
-      <div />
+      <div className={styles['main']}>
+        Telegram Web APP
+
+        <div>
+          <button onClick={onClose}>Закрыть</button>
+        </div>
+      </div>
     </>
   );
 }

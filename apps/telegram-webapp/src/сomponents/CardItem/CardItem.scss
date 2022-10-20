@@ -1,0 +1,26 @@
+@import "../../variables";
+
+.product {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $button;
+  padding: 15px;
+  width: 170px;
+}
+
+
+.img {
+  width: 100%;
+  background: lightgray;
+  height: 50px;
+  margin: 0 auto;
+  background: $button;
+}
+
+.description {
+  font-size: 0.8em;
+}
+
+.add-btn {
+  width: 100%;
+}

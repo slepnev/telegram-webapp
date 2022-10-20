@@ -1,8 +1,8 @@
 // Tg Colors
-$background: var(--tg-theme-bg-color);
-$color: var(--tg-theme-text-color);
-$hint: var(--tg-theme-hint-color);
-$link: var(--tg-theme-link-color);
-$button: var(--tg-theme-button-color);
-$button_text: var(--tg-theme-button-text-color);
-$bg_secondary: var(--tg-theme-secondary-bg-color);
+$background: var(--tg-theme-bg-color, transparent);
+$color: var(--tg-theme-text-color, #000);
+$hint: var(--tg-theme-hint-color, #000);
+$link: var(--tg-theme-link-color, blue);
+$button: var(--tg-theme-button-color, transparent);
+$button_text: var(--tg-theme-button-text-color, green);
+$bg_secondary: var(--tg-theme-secondary-bg-color, transparent);

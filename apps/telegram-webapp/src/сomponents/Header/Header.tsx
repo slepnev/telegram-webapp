@@ -14,12 +14,16 @@ const Header = (props: Props) => {
 
   return (
     <div className={styles['header']}>
-      <Button onClick={onClose}>Закрыть</Button>
-      <h1>Telegram Web APP</h1>
-      <span className={styles['username']}>
-        {user?.first_name} {user?.last_name}
-      </span>
-      <span className={styles['username']}>{user?.usernames}</span>
+      <div>
+        <Button onClick={onClose}>Закрыть</Button>
+      </div>
+      <div>
+        <span className={styles['username']}>
+          {user?.first_name} {user?.last_name}
+        </span>
+        <br />
+        <span className={styles['username']}>{user?.usernames}</span>
+      </div>
     </div>
   );
 };

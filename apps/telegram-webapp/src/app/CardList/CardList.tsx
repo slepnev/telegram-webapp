@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import './CardList.scss';
-import CardItem, { Card } from '../CardItem/CardItem';
+import CardItem, { Card } from './CardItem/CardItem';
 import { useTelegram } from '../../hooks/useTelegram';
 
 const cards: Card[] = [
@@ -61,16 +61,17 @@ interface OwnProps {
 type Props = OwnProps;
 
 const CardList = (props: Props) => {
-  const { tg, queryId } = useTelegram();
+  const { tg, onClose } = useTelegram();
 
-  const onSendData = (card: Card) => {
+  const onSendData = useCallback((card: Card) => {
     const data = {
       event: 'card',
       cardNumber: card.title,
       cardBalance: card.balance,
-      queryId,
+      // queryId,
     };
     tg.sendData(JSON.stringify(data));
+    console.log(JSON.stringify(data));
 
     // fetch('http://example/card', {
     //   method: 'POST',
@@ -79,33 +80,31 @@ const CardList = (props: Props) => {
     //   },
     //   body: JSON.stringify(data)
     // })
-  };
+  }, [tg]);
 
-  const onSendCredit = () => {
+  const onSendCredit = useCallback(() => {
     const data = {
       event: 'unknown',
     };
     tg.sendData(JSON.stringify(data));
-  };
+  }, [tg]);
 
-  useEffect(() => {
-    tg.onEvent('mainButtonClicked', onSendCredit);
-    return () => {
-      tg.offEvent('mainButtonClicked', onSendCredit);
-    };
-  }, [onSendData]);
-
-  const onView = (card: Card) => {
-    tg.MainButton.show();
-    tg.MainButton.setParams({
-      text: `Взять кредит`,
-    });
-  };
+  // useEffect(() => {
+  //   tg.MainButton.show();
+  //   tg.MainButton.setParams({
+  //     text: `Взять кредит`,
+  //   });
+  //   tg.MainButton.onClick(onSendCredit);
+  //
+  //   return () => {
+  //     tg.offEvent('mainButtonClicked', onSendCredit);
+  //   };
+  // }, [tg, onSendCredit]);
 
   return (
     <div className={'list'}>
       {cards.map((item) => (
-        <CardItem card={item} onView={onView} className={'item'} />
+        <CardItem key={item.id} card={item} onView={onSendData} className={'item'} />
       ))}
     </div>
   );

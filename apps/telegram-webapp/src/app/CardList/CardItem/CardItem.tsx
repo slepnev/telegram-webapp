@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../Button/Button';
+import Button from '../../../сomponents/Button/Button';
 import './CardItem.scss';
 
 export interface Card {

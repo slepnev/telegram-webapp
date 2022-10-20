@@ -3,8 +3,8 @@ import { useTelegram } from '../hooks/useTelegram';
 import { useEffect } from 'react';
 import Header from '../сomponents/Header/Header';
 import { Route, Routes } from 'react-router-dom';
-import CardList from '../сomponents/CardList/CardList';
-import Form from '../сomponents/Form/Form';
+import CardList from './CardList/CardList';
+import Form from './Form/Form';
 
 export function App() {
   const { onClose, tg } = useTelegram();

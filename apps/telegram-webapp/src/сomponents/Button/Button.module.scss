@@ -1,0 +1,10 @@
+@import "../../variables";
+
+.button {
+  padding: 10px 15px;
+  background: $button;
+  color: $button_text;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

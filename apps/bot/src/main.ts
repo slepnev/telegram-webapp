@@ -15,7 +15,13 @@ bot.on('message', async (msg) => {
     await bot.sendMessage(chatId, 'Ниже появится кнопка, заполни форму', {
       reply_markup: {
         keyboard: [
-          [{ text: 'Заполнить форму', web_app: { url: webAppUrl + '/form' } }],
+          [
+            { text: 'Заполнить форму', web_app: { url: webAppUrl + '/form' } },
+            {
+              text: 'Проверить счета',
+              web_app: { url: webAppUrl },
+            },
+          ],
         ],
       },
     });
@@ -56,6 +62,13 @@ bot.on('message', async (msg) => {
           }, 3000);
           break;
         case 'card':
+          await bot.sendMessage(
+            chatId,
+            `*Проверка счета:*\n Сумма на вашем сечту ${data?.cardNumber} составляет: ${data?.cardBalance} руб.`,
+            { parse_mode: 'Markdown' }
+          );
+          break;
+        case 'card_api':
           await bot.answerWebAppQuery(data?.queryId, {
             type: 'article',
             id: data?.queryId,

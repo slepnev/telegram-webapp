@@ -89,17 +89,17 @@ const CardList = (props: Props) => {
     tg.sendData(JSON.stringify(data));
   }, [tg]);
 
-  // useEffect(() => {
-  //   tg.MainButton.show();
-  //   tg.MainButton.setParams({
-  //     text: `Взять кредит`,
-  //   });
-  //   tg.MainButton.onClick(onSendCredit);
-  //
-  //   return () => {
-  //     tg.offEvent('mainButtonClicked', onSendCredit);
-  //   };
-  // }, [tg, onSendCredit]);
+  useEffect(() => {
+    tg.MainButton.show();
+    tg.MainButton.setParams({
+      text: `Взять кредит`,
+    });
+    tg.MainButton.onClick(onSendCredit);
+
+    return () => {
+      tg.offEvent('mainButtonClicked', onSendCredit);
+    };
+  }, [tg, onSendCredit]);
 
   return (
     <div className={'list'}>
